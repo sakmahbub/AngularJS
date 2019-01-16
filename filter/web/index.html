@@ -43,8 +43,8 @@
             
             <table border="1" width="100%">
                 <tr>
-                    <th ng-click="orderByMe('name')">Name Order list</th>
-                    <th ng-click="orderByMe('country')">Country Order list</th>
+                    <th ng-click="orderByMe('name')"><input type="button" value="Name Order list"/></th>
+                    <th ng-click="orderByMe('country')"><input type="button" value="Country Order list"/></th>
                    
                 </tr>
                 <tr ng-repeat="c in names | orderBy:myOrder">
