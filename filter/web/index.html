@@ -1,0 +1,87 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+        <link href="css/bootstrap-theme.css" rel="stylesheet"/>
+        <script src="js/angular.js"></script>
+
+    </head>
+    <body>
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <h3> The name is {{firstName| uppercase}}</h3>
+            <h3> The name is {{firstName| lowercase}}</h3>
+            <h3> The name is {{lastName| uppercase}}</h3>
+            <h3> The name is {{lastName| lowercase}}</h3>
+
+
+            <p>Looping with objects:</p>
+            <ul>
+                <li ng-repeat="x in names| orderBy: 'country'">
+                    {{x.name + "---" + x.country}}  
+                </li>
+            </ul>
+
+
+            <h1>Price: {{ price | currency }}</h1>
+            <ul>
+                <li ng-repeat="x in names| filter: 'mah'">
+                    {{x.name + "---" + x.country}}  
+                </li>
+            </ul>
+
+            <p>Type a letter in the input field:</p>
+            <input type="text" ng-model="search"/>
+
+            <ul>
+                <li ng-repeat="x in names | filter: search">
+                    {{x.name + "---" + x.country}}  
+                </li>
+            </ul>
+            
+            <table border="1" width="100%">
+                <tr>
+                    <th ng-click="orderByMe('name')">Name Order list</th>
+                    <th ng-click="orderByMe('country')">Country Order list</th>
+                   
+                </tr>
+                <tr ng-repeat="c in names | orderBy:myOrder">
+                    <td>{{c.name}}</td>
+                    <td>{{c.country}}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script>
+            angular.module('myApp', []).controller('myCtrl', function ($scope) {
+                $scope.firstName = "Sakil",
+                        $scope.lastName = "Mahbub"
+
+
+
+
+                $scope.names = [
+
+                    {name: 'Jani', country: 'Norway'},
+                    {name: 'Mahbub', country: 'Sweden'},
+                    {name: 'Maotafi', country: 'England'},
+                    {name: 'Ruhul', country: 'Norway'},
+                    {name: 'baby', country: 'Denmark'},
+                    {name: 'Nazmul', country: 'Sweden'},
+                    {name: 'Hasan', country: 'Denmark'},
+                    {name: 'Mary', country: 'England'},
+                    {name: 'Lakhi', country: 'Norway'}
+                ]
+
+                $scope.price = 58;
+                
+                $scope.orderByMe=function(x){
+                    $scope.myOrder=x;
+                }
+            });
+        </script>
+    </body>
+</html>
