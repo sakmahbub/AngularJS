@@ -11,32 +11,40 @@
         <script>
             var model = {
                 user: "Mahbub",
-                items: [{action: "Buy Flowers", done: false},
-                    {action: "Get Shoes", done: false},
-                    {action: "Collect Tickets", done: true},
-                    {action: "Call Joe", done: true}]
+                items: []
             };
             var todoApp = angular.module("todoApp", []);
-            todoApp.controller("ToDoctrl", function ($scope){
-                $scope.todomah =model;
-                
-                $scope.incompleteCount = function (){
-                    var count=0;
-                    angular.forEach($scope.todomah.items, function (item){
-                        if(!item.done){
+            todoApp.filter("checkedItems", function () {
+                return function (items, showComplete) {
+                    var resultArr = [];
+                    angular.forEach(items, function (item){
+                       if(item.done == false || showComplete == true){
+                           resultArr.push(item);
+                       } 
+                    });
+                    return resultArr;
+                }
+            });
+            todoApp.controller("ToDoctrl", function ($scope) {
+                $scope.todomah = model;
+
+                $scope.incompleteCount = function () {
+                    var count = 0;
+                    angular.forEach($scope.todomah.items, function (item) {
+                        if (!item.done) {
                             count++;
                         }
                     });
-                   return count; 
+                    return count;
                 }
-                
-                $scope.warningLabel = function (){
-                    
-                    return  $scope.incompleteCount() <3 ? "label-success" : "label-warning";
+
+                $scope.warningLabel = function () {
+
+                    return  $scope.incompleteCount() < 3 ? "label-success" : "label-warning";
                 }
-                
-                $scope.addNewItem = function (actionText){
-                    $scope.todomah.items.push({ action: actionText, done: false});
+
+                $scope.addNewItem = function (actionText) {
+                    $scope.todomah.items.push({action: actionText, done: false});
                 }
             });
         </script>
@@ -53,9 +61,9 @@
 
         <div class="panel">
             <div class="input-group">
-                <input class="form-control"/>
+                <input class="form-control" ng-model="actionText"/>
                 <span class="input-group-btn">
-                    <button class="btn btn-default">Add</button>
+                    <button class="btn btn-default" ng-click="addNewItem(actionText)">Add</button>
                 </span>
             </div>
 
@@ -65,19 +73,21 @@
                     <tr>
                         <th>Description</th>
                         <th>Done</th>
-                       
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in todomah.items">
+                    <tr ng-repeat="item in todomah.items| checkedItems:showComplete | orderBy:'action'">
                         <td>{{item.action}}</td>
                         <td><input type="checkbox" ng-model="item.done"/></td>
-                        
+
                     </tr>
                 </tbody>
 
             </table>
-
+            <div class="checkbox-inline">
+                <label><input type="checkbox" ng-model="showComplete"/>Show Complete</label>
+            </div>
 
         </div>
     </body>
