@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="angch02" default="default" basedir=".">
-    <description>Builds, tests, and runs the project angch02.</description>
+<project name="angularJSw3School" default="default" basedir=".">
+    <description>Builds, tests, and runs the project angularJSw3School.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

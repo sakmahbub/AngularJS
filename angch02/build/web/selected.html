@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <body ng-controller="Ctrl"  ng-app="myApp">
+
+        <div> 
+            <select ng-model="selectedName" ng-options="mahbub for mahbub in names">
+
+            </select>
+
+
+        </div>
+
+
+
+        <script>
+                    var app = angular.module('myApp', []);
+                    app.controller('Ctrl', function ($scope, $http) {
+
+                        $scope.names = ["Round-37", "Round-38", "Round-39", "Round-40", "Round-41", "Round-42"];
+
+                    });
+        </script>
+
+    </body>
+</html>
