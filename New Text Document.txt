@@ -2,3 +2,15 @@ Mohammad Rajaul Islam
 Instructor (J2EE) & Full Stack Developer
 Mobile: 01686239146
 Email. rajaul.cse@gmail.com
+
+
+
+All information provided here is correct
+I myself have provided all the information in my stable state of mind.
+If any information is found false or fabricated, Square Pharmaceuticals Ltd. shall have the right to take any action before/during/after employment process.
+
+
+Q. Write AngularJS Life Cycle.
+The Bootstrap Phase
+The Compilation Phase
+The Runtime Data Binding Phase
