@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <style>
+            .mm{
+
+                background-color: pink;
+                margin: 0 auto;
+                padding: 50px, 20px;
+            }
+        </style>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       
+        <h:form styleClass="mm">
+            <h3>Student From Hibernate Crud</h3>
+            <h:commandButton action="index.xhtml" value="Home Page"></h:commandButton>
+            <h:commandButton action="update.xhtml" value="Update Page"></h:commandButton>
+            <h:panelGrid columns="3" >
+
+                <h:outputLabel>ID: </h:outputLabel>
+                <h:inputText id="vid" value="#{studentBean.student.id}" required="true" requiredMessage="Enter Your ID"/>
+                <p:message for="vid"/>
+
+                
+
+            </h:panelGrid>
+            <h:commandButton action="#{studentBean.save()}" value="Insert"/>
+            <h:commandButton action="#{studentBean.edit()}" value="Update"/>
+            <h:commandButton action="#{studentBean.del()}" value="Delete"/>
+            
+            
+        </h:form>
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+
+
+        <p:dataTable var="s" value="#{studentBean.list}">
+            <p:column headerText="ID">
+                <h:outputText value="#{s.id}"/>
+            </p:column>
+
+            <p:column headerText="Name">
+                <h:outputText value="#{s.name}"/>
+            </p:column>
+
+            <p:column headerText="Gender">
+                <h:outputText value="#{s.gender}"/>
+            </p:column>
+
+            <p:column headerText="Course">
+                <h:outputText value="#{s.course}"/>
+            </p:column>
+
+            <p:column headerText="Round">
+                <h:outputText value="#{s.round}"/>
+            </p:column>
+
+            <p:column headerText="Message">
+                <h:outputText value="#{s.msg}"/>
+            </p:column>
+
+        </p:dataTable>
+    </h:body>
+</html>
+
