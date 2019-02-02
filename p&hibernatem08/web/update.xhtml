@@ -10,7 +10,7 @@
 
                 background-color: pink;
                 margin: 0 auto;
-                padding: 50px, 20px;
+                
             }
         </style>
         <title>Facelet Title</title>
@@ -19,8 +19,9 @@
        
         <h:form styleClass="mm">
             <h3>Student From Hibernate Crud</h3>
-            <h:commandButton action="index.xhtml" value="Home Page"></h:commandButton>
-            <h:commandButton action="delete.xhtml" value="Delete Page"></h:commandButton>
+            <p:button outcome="index" value="Home Page"/>
+            <p:button outcome="delete" value="Delete Page"/>
+            
             <h:panelGrid columns="3" >
 
                 <h:outputLabel>ID: </h:outputLabel>
@@ -68,9 +69,9 @@
                 <p:message for="vmsg"/>
 
             </h:panelGrid>
-            <h:commandButton action="#{studentBean.save()}" value="Insert"/>
+           
             <h:commandButton action="#{studentBean.edit()}" value="Update"/>
-            <h:commandButton action="#{studentBean.del()}" value="Delete"/>
+           
             
             
         </h:form>
