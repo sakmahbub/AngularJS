@@ -8,21 +8,24 @@
         <style>
             .mm{
 
-                background-color: pink;
+                background-color: paleturquoise;
                 margin: 0 auto;
-                
+
+            }
+            .nn{
+                background-color: powderblue;
             }
         </style>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-       
-        <h:form styleClass="mm">
-            <h3>Student From Hibernate Crud</h3>
+        <div class="mm" align="center">
+        <h:form>
+            <h1>Student Regisrty Form</h1>
             <p:button outcome="index" value="Home Page"/>
             <p:button outcome="delete" value="Delete Page"/>
-            
-            <h:panelGrid columns="3" >
+
+            <h:panelGrid columns="3" styleClass="nn">
 
                 <h:outputLabel>ID: </h:outputLabel>
                 <h:inputText id="vid" value="#{studentBean.student.id}" required="true" requiredMessage="Enter Your ID"/>
@@ -69,12 +72,13 @@
                 <p:message for="vmsg"/>
 
             </h:panelGrid>
-           
+
             <h:commandButton action="#{studentBean.edit()}" value="Update"/>
-           
-            
-            
+
+
+
         </h:form>
+        </div>
         <br />
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
 
